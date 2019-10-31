@@ -20,6 +20,60 @@ Now, if you open the url ‘http://yourhost:8080’, you should have the default
 
 This app will consist of three views, two (Login view and Sign Up view) that we can access only without authentication, and one (Home view) that we can access only with authentication.
 
-* Step 1: Login and Signup
+# Step 1: Login and Signup
+Let’s create the Login view. To do so, we will create a new Vue component called Login under src/views
+For the moment, the component will simply consist of a title, two input fields, a button and a small sentence in the html.
+
+```
+<template>
+    <div class="login">
+        <h3>Sign In</h3>
+        <input type="text" placeholder="Email"><br>
+        <button>Connection</button>
+        <p>If you dont have an account you can create one</p>
+    </div>
+</template>
+<script>
+    export default {
+        name: 'login',
+        data() {
+            return{};
+        },
+        methods: {}
+    }
+</script>
+<style scoped> /* "scoped" attribute limites the CSS to this componenet */
+</style>
+```
+Now use the vue-router to display this component.  Add the Login component to the "src/router/index.js" file.
+```
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Home from '../views/Home.vue'
+
+Vue.use(VueRouter)
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  }
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
+
+export default router
+```
+
 
 
